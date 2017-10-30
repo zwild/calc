@@ -1,0 +1,13 @@
+#+author: zwild
+#+startup: showall
+
+* Introduction
+  A calculator in PureScript.
+* Run
+  #+begin_src shell-script
+  pulp build
+  pulp run
+
+  > a = 10
+  > log(2 * a - (4 + 4))
+  #+end_src

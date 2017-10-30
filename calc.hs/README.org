@@ -1,0 +1,14 @@
+#+author: zwild
+#+startup: content
+
+* Introduction
+  First program in Haskell.
+* Run
+  #+begin_src shell-script
+  stack setup
+  stack build
+  stack exec calc
+
+  > a = 10
+  > sin 2 * a ^ 4 + 4
+  #+end_src
