@@ -1,0 +1,14 @@
+#+author: zwild
+#+startup: showall
+
+* Introduction
+  A calculater in Scala.
+
+* Run
+  #+begin_src shell-script
+  sbt compile
+  sbt run
+
+  > a = 10
+  > sin(2 * a ^ 4 + 4)
+  #+end_src
