@@ -9,6 +9,6 @@
   sbt compile
   sbt run
 
-  > a = 10
-  > sin(2 * a ^ 4 + 4)
+  > a := 10
+  > sin(2 * a * (4 + 4))
   #+end_src

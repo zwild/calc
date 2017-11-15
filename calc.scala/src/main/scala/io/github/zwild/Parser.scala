@@ -16,15 +16,15 @@ object CalcParsers extends RegexParsers {
   def number: Parser[Expr] = """\d+(\.\d*)?""".r ^^ { x => NumberExp(x.toDouble) }
   def variable: Parser[Expr] = """[a-zA-Z_]\w*""".r ^^ { VarExp(_) }
 
-  def assignment: Parser[Expr] = variable ~ ":=" ~ expr ^^ {
+  def assignment: Parser[Expr] = variable ~ ":=" ~ numberExpr ^^ {
     case VarExp(v) ~ ":=" ~ e => AssignExp(v, e)
   }
 
-  def function: Parser[Expr] = variable ~ lParen ~ expr ~ rParen ^^ {
+  def function: Parser[Expr] = variable ~ lParen ~ exprAll ~ rParen ^^ {
     case VarExp(f) ~ lParen ~ e ~ rParen => FunExp(f, e)
   }
 
-  def factor: Parser[Expr] = number | "(" ~> expr <~ ")"
+  def factor: Parser[Expr] = number | variable | "(" ~> numberExpr <~ ")"
 
   def term: Parser[Expr] = factor ~ rep("*" ~ factor | "/" ~ factor) ^^ {
     case number ~ list => (number /: list) {
@@ -33,14 +33,14 @@ object CalcParsers extends RegexParsers {
     }
   }
 
-  def expr: Parser[Expr] = term ~ rep("+" ~ term | "-" ~ term) ^^ {
+  def numberExpr: Parser[Expr] = term ~ rep("+" ~ term | "-" ~ term) ^^ {
     case number ~ list => list.foldLeft(number) {
       case (x, "+" ~ y) => OpExp(x, Plus, y)
       case (x, "-" ~ y) => OpExp(x, Minus, y)
     }
   }
 
-  def exprAll: Parser[Expr] = expr | assignment | function | variable
+  def exprAll: Parser[Expr] = assignment | function | numberExpr | variable
 
   def apply(s: String): Either[CalcError, Expr] = parseAll(exprAll, s) match {
     case Success(expr, _) => Right(expr)

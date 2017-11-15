@@ -33,3 +33,5 @@ final case object Div extends Op {
 
 sealed trait CalcError
 final case object ParseError extends CalcError
+final case class VariableNotFound(v: String) extends CalcError
+final case class FunctionNotFound(f: String) extends CalcError
