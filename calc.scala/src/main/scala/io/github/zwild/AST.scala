@@ -33,5 +33,9 @@ final case object Div extends Op {
 
 sealed trait CalcError
 final case object ParseError extends CalcError
-final case class VariableNotFound(v: String) extends CalcError
-final case class FunctionNotFound(f: String) extends CalcError
+final case class VariableNotFound(v: String) extends CalcError {
+  override def toString = "variable not found: " + v
+}
+final case class FunctionNotFound(f: String) extends CalcError {
+  override def toString = "function not found: " + f
+}
