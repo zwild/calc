@@ -1,0 +1,13 @@
+# Fake
+fake.cmd
+fake.sh
+.fake/
+
+# Paket
+.paket/
+paket.lock
+paket-files/
+packages/
+
+*bin/
+*obj/
