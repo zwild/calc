@@ -1,3 +1,6 @@
+*bin/
+*obj/
+
 # Fake
 fake.cmd
 fake.sh
@@ -8,6 +11,3 @@ fake.sh
 paket.lock
 paket-files/
 packages/
-
-*bin/
-*obj/

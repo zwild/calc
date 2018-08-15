@@ -1,0 +1,14 @@
+#+author: zwild
+
+* Introduction
+  A calc in F#.
+
+* Run
+  #+begin_src shell-script
+  paket install
+  fake build
+  dotnet run --project src/
+
+  > a = 10
+  > sin 2 * a ^ 4 + 4
+  #+end_src
