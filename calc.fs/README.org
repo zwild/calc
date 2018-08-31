@@ -10,5 +10,5 @@
   dotnet run --project src/
 
   > a = 10
-  > sin 2 * a ^ 4 + 4
+  > sin( 2 * exp(a) / (4 + 4))
   #+end_src

@@ -7,7 +7,6 @@ fake.sh
 .fake/
 
 # Paket
-.paket/
 paket.lock
 paket-files/
 packages/
